@@ -1,7 +1,6 @@
 # Universidad de Buenos Aires
 
-### Facultades: 
+### Oferta carreras de grado: 
 
-- Ciencias Económicas
-- Ciencias Médicas
-- Derecho
+- Facultad
+- Carrera
