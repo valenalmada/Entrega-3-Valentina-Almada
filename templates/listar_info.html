@@ -1,11 +1,36 @@
- 
+ {% extends "Base.html" %}
+ {% block title_head %}Carreras de Grado{% endblock title_head %}
 
-<ul>
-    {% for info_uba in listado_info_uba %}
+ {% block contenido %}
 
-    <li>
-        {{info_uba}}
-    </li>
-    {% endfor %}
+    <form action= {% url "Carreras de Grado" %} method="get">
+        {{formulario}}
+        
+        <input type="submit" value="Buscar">
+    
+    
+    </form>
 
-</ul>
+    {% if listado_info_uba %} 
+    <ul>
+        {% for info_uba in listado_info_uba %}
+
+        <li>
+            {{info_uba}}
+            | <a href={% url "ver" info_uba.id %}>Ver</a>
+            | <a href={% url "actualizar" info_uba.id %}>Actualizar</a>
+            | <a href={% url "eliminar" info_uba.id %}>Eliminar</a>
+        </li>
+
+        {% endfor %}
+
+    </ul>
+
+    {% else %}
+        <p>No se encontraron carreras.</p>
+    {% endif %}
+{% endblock contenido %}
+
+
+
+{% url '${some-url-name}' %}

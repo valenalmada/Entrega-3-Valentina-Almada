@@ -1,0 +1,17 @@
+{% extends "Base.html" %}
+{% block title_head %}Eliminar{% endblock title_head %}
+{% block contenido %}
+
+
+    <form action={% url "eliminar" universidad_de_buenos_aires.id %} method="POST">
+        {% csrf_token %} 
+
+        ¿Confirma las modificaciones realizadas?
+
+
+        <input type="submit" value="Confirmar">
+
+
+    </form>
+
+{% endblock contenido %}

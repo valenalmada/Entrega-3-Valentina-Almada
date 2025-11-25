@@ -5,4 +5,4 @@ class Universidad_de_Buenos_Aires(models.Model):
     carrera= models.CharField(max_length=100)
 
     def __str__(self):
-        return f'UBA({self.id}): {self.facultad} - {self.carrera}'
+        return f'({self.id}): {self.facultad} - {self.carrera}'

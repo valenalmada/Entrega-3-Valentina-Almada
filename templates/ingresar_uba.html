@@ -1,3 +1,19 @@
-Bienvenido a la Universidad de Buenos Aires!
-Facultad: {{objeto_guardado.facultad}}
-Carrera: {{objeto_guardado.carrera}}
+{% extends "Base.html" %}
+{% block title_head %}Ingreso UBA{% endblock title_head %}
+{% block contenido %}
+    Bienvenido a la Universidad de Buenos Aires!
+
+    <form action={% url "Ingreso UBA" %} method="POST">
+        {% csrf_token %} 
+
+        {{formulario}}
+
+
+        <input type="submit" value="Ingresar">
+
+
+    </form>
+
+{% endblock contenido %}
+
+
