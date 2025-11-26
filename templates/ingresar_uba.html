@@ -3,7 +3,7 @@
 {% block contenido %}
     Bienvenido a la Universidad de Buenos Aires!
 
-    <form action={% url "Ingreso UBA" %} method="POST">
+    <form action={% url "Ingreso UBA" %} method="POST" enctype="multipart/form-data">
         {% csrf_token %} 
 
         {{formulario}}

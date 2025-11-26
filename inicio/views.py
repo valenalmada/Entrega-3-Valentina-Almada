@@ -4,20 +4,22 @@ from inicio.models import Universidad_de_Buenos_Aires
 from inicio.forms import IngresarUBA, BuscarCarrera
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 def inicio(request):
     return render(request, "inicio.html")
 
 def otra(request):
     return render(request, "otra.html" )
-
+@login_required
 def ingresar_uba(request):
     if request.method=="POST":
-        formulario=IngresarUBA(request.POST)
+        formulario=IngresarUBA(request.POST, request.FILES)
         if formulario.is_valid():
             info=formulario.cleaned_data
 
-            uba=Universidad_de_Buenos_Aires(facultad=info.get("facultad"), carrera=info.get("carrera"))
+            uba=Universidad_de_Buenos_Aires(facultad=info.get("facultad"), carrera=info.get("carrera"), imagen=info.get("imagen"))
             uba.save()
 
             return redirect("Carreras de Grado")
@@ -47,13 +49,13 @@ def ver_uba(request, info_uba_id):
 
 
 
-class ActualizarUba(UpdateView):
+class ActualizarUba(LoginRequiredMixin,UpdateView):
     model= Universidad_de_Buenos_Aires
     template_name= "actualizar_info.html"
     fields="__all__"
     success_url=reverse_lazy("Carreras de Grado")
 
-class EliminarUba (DeleteView):
+class EliminarUba (LoginRequiredMixin,DeleteView):
     model= Universidad_de_Buenos_Aires
     template_name= "eliminar_info.html"
     success_url=reverse_lazy("Carreras de Grado")

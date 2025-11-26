@@ -11,6 +11,13 @@
         Carrera: {{info_uba.carrera}}
     </li>
 
+    {% if info_uba.imagen %}
+    
+    <li>
+        Imagen: <img src={{info_uba.imagen.url}} alt="Imagen económicas" height="200px">
+    </li>
+    {% endif %}
+
 
 </ul>
 {% endblock contenido %}
