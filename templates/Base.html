@@ -11,6 +11,7 @@
 
     <nav>
         <a href={% url "Inicio" %}>Inicio</a>
+        <a href={% url "Sobre Mi" %}>Sobre Mi</a>
         <a href={% url "Ingreso UBA" %}>Ingreso UBA</a>
         <a href={% url "Carreras de Grado"  %}>Carreras de Grado</a>
         {% if request.user.is_authenticated %}

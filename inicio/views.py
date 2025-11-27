@@ -59,3 +59,7 @@ class EliminarUba (LoginRequiredMixin,DeleteView):
     model= Universidad_de_Buenos_Aires
     template_name= "eliminar_info.html"
     success_url=reverse_lazy("Carreras de Grado")
+
+
+def sobre_mi(request):
+    return render(request, "sobre_mi.html")
